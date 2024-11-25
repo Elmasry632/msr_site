@@ -17,16 +17,23 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from django.http import HttpResponse
+from django.shortcuts import render
+
 def about(request):
     return HttpResponse("This is about page")
 def masry(request):
     return HttpResponse("This is Masry page")
 def contact(request):
     return HttpResponse("This is Contact page")
+# def welcome(request):
+#     return HttpResponse("Welcome to MSR Site")
+def welcome(request):
+    return render(request, 'home.html')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('about', about),
     path('masry', masry),
     path('contact', contact),
     path('blog/',include('blog.urls')),
+    path('', welcome)
 ]
