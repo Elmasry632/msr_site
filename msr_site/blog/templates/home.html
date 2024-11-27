@@ -83,7 +83,7 @@ html {
 
 /*end component*/
 
-.header {
+{% comment %} .header {
     padding: 20px;
 }
 
@@ -171,7 +171,7 @@ html {
 
 .header .links ul li:not(:last-child) a {
     border-bottom: 1px solid #ddd;
-}
+} {% endcomment %}
 
 
 /* end header */
@@ -531,7 +531,29 @@ html {
     font-weight: bold;
     color: var(--main-color);
 }
-
+.go-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 60%;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  
+  .go-top-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .go-top-btn:active {
+    transform: scale(0.95);
+  }
 
 /*end footer*/
     </style>
@@ -552,9 +574,9 @@ html {
                 <span></span>
                 </span>
                 <ul>
-                    <li><a href="#services">services</a></li>
-                    <li><a href="#portfelo">portfelo</a></li>
-                    <li><a href="#about">about</a> </li>
+                    <li><a href="/admin">admin</a></li>
+                    <li><a href="/blog">blog</a></li>
+                    <li><a href="/msr">msr</a> </li>
                     <li><a href="#contact">contact</a></li>
                 </ul>
             </div>
@@ -755,8 +777,35 @@ html {
         </div>
 
         <!--end footer-->
+        <div style="height: 2000px; padding: 20px;">
+            <h1>Scroll Down to See the Button</h1>
+            <p>Keep scrolling to see the "Go to Top" button appear.</p>
+          </div>
+        
+          <!-- Go to Top Button -->
+          <button id="goTopBtn" class="go-top-btn">↑</button>
+        <script>
+            // Select the button
+const goTopBtn = document.getElementById('goTopBtn');
 
+// Show the button when the user scrolls down 100px
+window.onscroll = function () {
+  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+    goTopBtn.style.display = "block";
+  } else {
+    goTopBtn.style.display = "none";
+  }
+};
 
+// Scroll to the top when the button is clicked
+goTopBtn.addEventListener('click', function () {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
+        </script>
 </body>
 
 </html>
