@@ -1,12 +1,10 @@
 from django.contrib import admin
-from .models import Post
-@admin.register(Post)
-class PostAdmin(admin.ModelAdmin):
-    list_display = ['title', 'slug', 'publish', 'status',]
-    list_filter = ['status', 'created', 'publish']
-    # change_list_template = ['change', 'list_display']
-    search_fields = ['title', 'body']
-    prepopulated_fields = {'slug': ('title',)}
-    # raw_id_fields = ['author']
-    date_hierarchy = 'publish'
-    ordering = ['status', 'publish']
+from .models import Task_board
+from .models import Task_desc
+@admin.register(Task_board)
+class TaskBoard(admin.ModelAdmin):
+    list_display = ['project_name','desc_project']
+
+# @admin.register(Task_desc)
+class TaskDesc(admin.ModelAdmin):
+    list_display = ['task_name','desc_task']
