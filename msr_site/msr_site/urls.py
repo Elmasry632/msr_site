@@ -35,5 +35,6 @@ urlpatterns = [
     path('masry', masry),
     path('contact', contact),
     path('blog/',include('blog.urls')),
+    path('msr/', include('msr.urls')),
     path('', welcome)
 ]
