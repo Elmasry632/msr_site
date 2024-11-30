@@ -6,6 +6,7 @@ from .models import Task_board
 
 def msr(request):
     boards = Task_board.objects.all()
+    return render(request,'index.html',{'boards':boards})
 
     # first option dont use html file
     # ----------------------?
@@ -17,5 +18,13 @@ def msr(request):
     # return HttpResponse(responce_html) 
 
     # second option use html file
+# ------------------------------------------------------------------------------------------
 
-    return render(request,'index.html',{'boards':boards})
+def board_topics(request, board_id):
+    try:
+        board = Task_board.objects.get(pk=board_id)
+        return render(request, 'topics.html')
+
+    except:
+        raise 
+

@@ -14,5 +14,6 @@ class Task_desc(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, default='elmasry')  # Replace `1` with a valid user ID
     created_on=models.DateTimeField(auto_now_add=True)
 
-
+#   def __str__(self):
+#         return self.project_name
 
