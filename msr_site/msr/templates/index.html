@@ -25,7 +25,9 @@
         <tr>
 
             <td>
-              <a href="http://localhost:8000/admin/msr/task_board" >{{task_board.project_name}}</a>
+              <a href="{% url 'board_topics' task_board.pk%}">
+                {{task_board.project_name}}
+              </a>
               <small class="text-muted d-block">
               {{task_board.desc_project}}
               </small>

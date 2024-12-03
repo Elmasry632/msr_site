@@ -36,6 +36,6 @@ urlpatterns = [
     path('masry', masry),
     path('contact', contact),
     path('blog/',include('blog.urls')),
-    path('', include('msr.urls')),
+    path('', include('msr.urls'), name='home'),
     # path('', welcome)
-]
+    ]

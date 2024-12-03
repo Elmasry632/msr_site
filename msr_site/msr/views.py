@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, render
+from django.http import HttpResponse, Http404
 from .models import Task_board
 # Create your views here.
 
@@ -20,11 +20,13 @@ def msr(request):
     # second option use html file
 # ------------------------------------------------------------------------------------------
 
-def board_topics(request, board_id):
-    try:
-        board = Task_board.objects.get(pk=board_id)
-        return render(request, 'topics.html')
 
-    except:
-        raise 
+def board_topics(request, board_id):
+    # try:
+    #     board = Task_board.objects.get(pk=board_id)
+
+    # except Task_board.DoesNotExist:
+    #     raise Http404
+    board = get_object_or_404(Task_board, pk=board_id)
+    return render(request, 'topics.html', {'board': board})
 
