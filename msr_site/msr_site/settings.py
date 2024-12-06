@@ -80,16 +80,20 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-        
-        # 'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME':'django_msr_site',
-        # 'USER':'openpg',
-        # 'PASSWORD':'openpgpwd',
-        # 'HOST':'localhost',
-        # 'PORT':'5433',
-
     }
 }
+
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "elmasry",
+#         "USER": "openpg",
+#         "PASSWORD": "712002",
+#         "HOST": "127.0.0.1",
+#         "PORT": "5432",
+#     }
+# }
 
 
 # Password validation
@@ -127,10 +131,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = "D:/New folder (3)/rebo_github/msr_site/staticfiles"
+
 
 STATICFILES_DIRS = [
     # BASE_DIR / "static",
         os.path.join(BASE_DIR, "static"),
+        
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

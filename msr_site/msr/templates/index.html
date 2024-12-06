@@ -1,44 +1,35 @@
-{%load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Elmasry</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-  </head>
-  <body>
-    <div class="container">
-    <div class="address mark text-center">Elmasry</div>
-    <table class="table ">
-      <thead class="table-danger">
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Task</th>
-            <th>last</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for task_board in boards %}
-        <tr>
+{%extends 'base.html'%}
+{%block title %} Home {%endblock%}  
+{
+  {% block table_task %}
+  <table class="table ">
+    <thead class="table-danger">
+      <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Task</th>
+          <th>last</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for task_board in boards %}
+      <tr>
 
-            <td>
-              <a href="{% url 'board_topics' task_board.pk%}">
-                {{task_board.project_name}}
-              </a>
-              <small class="text-muted d-block">
-              {{task_board.desc_project}}
-              </small>
-            </td>
-            <td>{{task_board.desc_project}}</td> 
-            <td>{{task_board.task_name}}</td>
-            <td></td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-</div>
-  </body>
-</html>
+          <td>
+            <a href="{% url 'board_topics' task_board.pk%}">
+              {{task_board.project_name}}
+            </a>
+            <small class="text-muted d-block">
+            {{task_board.desc_project}}
+            </small>
+          </td>
+          <td>{{task_board.desc_project}}</td> 
+          
+          <td>{{task_board.task_name}}</td>
+          <td></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endblock table_task %}
+      }

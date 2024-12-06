@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+TASK
+{% endblock title %}
+ {%block table_task%}
+
+<table class="table ">
+    <thead class="table-danger">
+        <tr>
+            <th>project</th>
+            <th>Name</th>
+            <th>responcile</th>
+            <th>Description</th>
+            <th>Created</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in task_desc_board %}
+        <tr>
+            <td>{{ task.board.project_name }}</td>
+            <td>{{ task.task_name }}</td>
+            <td>{{ task.responcile }}</td>
+            <td>{{ task.task_desc }}</td>
+            <td>{{task.created_on}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

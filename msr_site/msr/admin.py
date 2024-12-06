@@ -6,8 +6,10 @@ from .models import Task_desc
 class TaskBoard(admin.ModelAdmin):
     list_display = ['project_name','desc_project']
 
+
 admin.site.register(Task_desc)
 class TaskDesc(admin.ModelAdmin):
-    list_display = ['task_name','task_desc','responcile']
+    list_display = ['task_name','responcile']
+    
     
 
