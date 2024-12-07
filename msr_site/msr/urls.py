@@ -5,5 +5,5 @@ urlpatterns = [
     path('', views.msr, name='home'),
     path('msr/<int:board_id>/', views.board_topics, name="board_topics"),
     path('msr/task/',views.task_board, name="task_desc"),
-    path('test/', views.test_board, name="test"),
+    path('msr/<int:board_id>/new/', views.test_board, name="test_board"),
 ]

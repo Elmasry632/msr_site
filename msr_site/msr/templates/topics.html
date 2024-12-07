@@ -1,21 +1,23 @@
-{%extends 'base.html'%}
-2{%block title %} {{board.project_name}}{%endblock%}  
+{% extends 'base.html' %}
+{% block title %}
+	{{ board.project_name }}
+{% endblock %}
+
 {
 {% block table_task %}
-<table class="table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{board.project_name}}</td>
-            <td>{{task.board.task_name}}</td>
-        </tr>
-    </tbody>
-</table>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{ board.project_name }}</td>
+				<td>{{ task.board.task_name }}</td>
+			</tr>
+		</tbody>
+	</table>
 {% endblock table_task %}
-    }
-    
+}
