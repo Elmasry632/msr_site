@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse, Http404
-from .models import Task_board, Task_desc
+from .models import *
+from .forms import *
 # Create your views here.
 
 
@@ -26,6 +27,7 @@ def board_topics(request, board_id):
     # except Task_board.DoesNotExist:
     #     raise Http404
     board = get_object_or_404(Task_board, pk=board_id)
+    # form = addNewProgect()
     return render(request, 'topics.html', {'board': board})
 
 def task_board(request):

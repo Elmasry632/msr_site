@@ -1,5 +1,5 @@
 {%extends 'base.html'%}
-{%block title %} {{board.project_name}}{%endblock%}  
+2{%block title %} {{board.project_name}}{%endblock%}  
 {
 {% block table_task %}
 <table class="table">
@@ -12,9 +12,10 @@
     <tbody>
         <tr>
             <td>{{board.project_name}}</td>
-            <td></td>
+            <td>{{task.board.task_name}}</td>
         </tr>
     </tbody>
 </table>
 {% endblock table_task %}
     }
+    

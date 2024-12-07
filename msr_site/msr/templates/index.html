@@ -1,35 +1,33 @@
-{%extends 'base.html'%}
-{%block title %} Home {%endblock%}  
-{
-  {% block table_task %}
-  <table class="table ">
-    <thead class="table-danger">
-      <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Task</th>
-          <th>last</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for task_board in boards %}
-      <tr>
+{%extends 'base.html'%} {%block title %} {%endblock%} 
 
-          <td>
-            <a href="{% url 'board_topics' task_board.pk%}">
-              {{task_board.project_name}}
-            </a>
-            <small class="text-muted d-block">
-            {{task_board.desc_project}}
-            </small>
-          </td>
-          <td>{{task_board.desc_project}}</td> 
-          
-          <td>{{task_board.task_name}}</td>
-          <td></td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  {% endblock table_task %}
-      }
+   {% block table_task%}
+<table class="table">
+  <thead class="table-danger">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Task</th>
+      <th>last</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for task_board in boards %}
+    <tr>
+      <td>
+        <a href="{% url 'board_topics' task_board.pk%}">
+          {{task_board.project_name}}
+        </a>
+        <small class="text-muted d-block"> {{task_board.desc_project}} </small>
+      </td>
+      <td>{{task_board.desc_project}}</td>
+
+      <td>{{task_board.task_name}}</td>
+      <td></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock table_task %} 
+<!-- <form action="">
+  {{form}}
+</form> -->
