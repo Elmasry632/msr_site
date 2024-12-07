@@ -35,6 +35,10 @@ def task_board(request):
     # task_desc = get_object_or_404(Task_desc)
     return render(request, 'task_board.html',{'task_desc_board':task_desc_board})
 
+def test_board (request):
+    test_boards = test.objects.all()
+    return render(request,'add_project.html',{'test_boards':test_boards})
+
 
 
 
