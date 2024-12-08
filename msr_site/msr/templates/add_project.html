@@ -1,5 +1,5 @@
-{% extends 'base.html' %} {% block title %} ADD Project {% endblock title %} {%
-block header %}
+{% extends 'base.html' %} {% block title %} ADD Project {% endblock title %}
+{%block header %}
 <ol class="breadcrumb my-4" style="background-color: #adacac">
   <li class="breadcrumb-item">
     <a href="{% url 'task_boards' %}">Home</a>
@@ -11,7 +11,7 @@ block header %}
   <li class="breadcrumb-item active">New Project</li>
   {% endif %}
 </ol>
-{% endblock header %} {% block form %}
+{% endblock  %} {% block form %}
 <form method="POST">
   {% csrf_token %}
 
