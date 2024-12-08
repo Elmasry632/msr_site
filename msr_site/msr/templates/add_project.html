@@ -1,8 +1,27 @@
-{% extends 'base.html'%} {% block title %} ADD Project {% endblock title %} {%
-block form %}
-<form method="GET">
-  <input type="text" />
-  <button type="submit">Add Project</button>
+{% extends 'base.html'%} {% block title %} ADD Project {% endblock title %} 
+
+{% block header %} 
+<ol class="breadcrumb my-4" style="background-color: #adacac;">
+    <li class="breadcrumb-item "><a href="{% url 'home'%}"> Home </li></a>
+    {% if board.project_name %}
+    <li class="breadcrumb-item ">{{board.project_name}}</li>
+    {% endif %}
+    <li class="breadcrumb-item active">New Project</li>
+</ol>{% endblock %}
+
+{%block form %}
+<form method="POST">
+  {%csrf_token %}
+  <div class="form-group">
+
+    <label for="id_project">Project Name</label>
+    <input type="text" name="project_name" id="id_project" class="form-control"/>
+  </div>
+  <div class="form-group">
+    <label for="id_desc">Description</label>
+    <textarea class="form-control" name="description" id="id_desc" rows="6"></textarea>
+  </div>
+    <button type="submit" class="btn btn-success">Add Project</button>
 </form>
 
-{% endblock form %}
+{% endblock %}

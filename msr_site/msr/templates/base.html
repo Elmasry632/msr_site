@@ -1,22 +1,17 @@
-{%load static%}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{%block title%} {%endblock%}</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    
-</head>
-<body>
-    {% block header %}{% endblock %}
-    <div class="container">
-        <ol class="breadcrumb my-4" style="background-color: #adacac;">
-            <li class="breadcrumb-item "><a href="{% url 'home'%}"> Home </li></a>
-            <li class="breadcrumb-item active">{{board.project_name}}</li>
-        </ol>
-        {%block table_task%}{%endblock%}
-        {%block form %}{%endblock form%}
-    </div>
-</body>
-</html>
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>
+			{% block title %}{% endblock %}
+		</title>
+		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+	</head>
+	<body>
+		<div class="container"> {% block header %}{% endblock %}{% block table_task %}{% endblock %}
+            {% block form %}{% endblock %}
+			</div>
+		</body>
+	</html>

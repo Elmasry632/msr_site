@@ -1,4 +1,11 @@
-{%extends 'base.html'%} {%block title %} {%endblock%} {% block table_task%}
+{%extends 'base.html'%} {%block title %} {%endblock%} 
+{% block header %} 
+<ol class="breadcrumb my-4" style="background-color: #adacac;">
+    <li class="breadcrumb-item "><a href="{% url 'home'%}"> Home </li></a>
+    <li class="breadcrumb-item active">{{board.project_name}}</li>
+</ol>{% endblock %}
+{% block table_task%}
+
 <table class="table">
   <thead class="table-danger">
     <tr>

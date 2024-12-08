@@ -35,6 +35,10 @@ def task_board(request):
     # task_desc = get_object_or_404(Task_desc)
     return render(request, 'task_board.html',{'task_desc_board':task_desc_board})
 
-def test_board (request, board_id):
-    test_boards = get_object_or_404(test, pk=board_id)
-    return render(request,'add_project.html',{'test_boards':test_boards})
+def add_projects (request, board_id):
+    # add_project_form = get_object_or_404(add_project, pk=board_id)
+    if request.method == 'POST':
+        name_project = request.POST.get('project_name')
+        desc_project = request.POST.get('description')
+        print(name_project, desc_project)
+    return render(request,'add_project.html')

@@ -12,6 +12,6 @@ class TaskDesc(admin.ModelAdmin):
     list_display = ['task_name','responcile']
     
     
-@admin.register(test)
+@admin.register(add_project)
 class test(admin.ModelAdmin):
     list_display =['name']
