@@ -1,27 +1,50 @@
-{% extends 'base.html'%} {% block title %} ADD Project {% endblock title %} 
+{% extends 'base.html' %} {% block title %} ADD Project {% endblock title %} {%
+block header %}
+<ol class="breadcrumb my-4" style="background-color: #adacac">
+  <li class="breadcrumb-item">
+    <a href="{% url 'task_boards' %}">Home</a>
+  </li>
 
-{% block header %} 
-<ol class="breadcrumb my-4" style="background-color: #adacac;">
-    <li class="breadcrumb-item "><a href="{% url 'home'%}"> Home </li></a>
-    {% if board.project_name %}
-    <li class="breadcrumb-item ">{{board.project_name}}</li>
-    {% endif %}
-    <li class="breadcrumb-item active">New Project</li>
-</ol>{% endblock %}
-
-{%block form %}
+  {% if board %}
+  <li class="breadcrumb-item">{{ board.project_name }}</li>
+  {% else %}
+  <li class="breadcrumb-item active">New Project</li>
+  {% endif %}
+</ol>
+{% endblock header %} {% block form %}
 <form method="POST">
-  {%csrf_token %}
-  <div class="form-group">
+  {% csrf_token %}
 
-    <label for="id_project">Project Name</label>
-    <input type="text" name="project_name" id="id_project" class="form-control"/>
+  <!-- عرض الأخطاء إذا كانت هناك أخطاء في النموذج -->
+  {% if form.errors %}
+  <div class="alert alert-danger">
+    <ul>
+      {% for field in form %} {% for error in field.errors %}
+      <li>{{ error }}</li>
+      {% endfor %} {% endfor %}
+    </ul>
   </div>
+  {% endif %}
+
+  <!-- حقل اسم المشروع -->
   <div class="form-group">
-    <label for="id_desc">Description</label>
-    <textarea class="form-control" name="description" id="id_desc" rows="6"></textarea>
+    <label for="id_project_name">Project Name</label>
+    <input type="text" name="project_name" id="id_project_name"
+    class="form-control" " />
   </div>
-    <button type="submit" class="btn btn-success">Add Project</button>
+
+  <!-- حقل وصف المشروع -->
+  <div class="form-group">
+    <label for="id_description">Description</label>
+    <textarea
+      class="form-control"
+      name="description"
+      id="id_description"
+      rows="6"
+    ></textarea>
+  </div>
+
+  <!-- زر الإرسال -->
+  <button type="submit" class="btn btn-success">Add Project</button>
 </form>
-
-{% endblock %}
+{% endblock form %}

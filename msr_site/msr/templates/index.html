@@ -1,38 +1,45 @@
-{%extends 'base.html'%} {%block title %} {%endblock%} 
-{% block header %} 
-<ol class="breadcrumb my-4" style="background-color: #adacac;">
-    <li class="breadcrumb-item "><a href="{% url 'home'%}"> Home </li></a>
-    <li class="breadcrumb-item active">{{board.project_name}}</li>
-</ol>{% endblock %}
-{% block table_task%}
-
-<table class="table">
-  <thead class="table-danger">
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Task</th>
-      <th>last</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for task_board in boards %}
-    <tr>
-      <td>
-        <a href="{% url 'board_topics' task_board.pk%}">
-          {{task_board.project_name}}
-        </a>
-        <small class="text-muted d-block"> {{task_board.desc_project}} </small>
-      </td>
-      <td>{{task_board.desc_project}}</td>
-
-      <td>{{task_board.task_name}}</td>
-      <td></td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+{% extends 'base.html' %} {% block title %} Task Boards {% endblock title %} 
+{%block header %}
+<ol class="breadcrumb my-4" style="background-color: #adacac">
+  <li class="breadcrumb-item">
+    <a href="{% url 'task_boards' %}">Home</a>
+  </li>
+  <li class="breadcrumb-item active">{{ board.project_name }}</li>
+</ol>
+{% endblock %}
+{%block table_task %}
+<div class="table-responsive">
+  <table class="table table-bordered table-hover">
+    <thead class="table-danger">
+      <tr>
+        <th>Project Name</th>
+        <th>Description</th>
+        <th>View Tasks</th>
+        <th>Last Updated</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for tasks in boards %}
+      <tr>
+        <td>
+          <a href="{% url 'task_board' tasks.pk %}">
+            {{ tasks.project_name }}
+          </a>
+        </td>
+        <td>{{ tasks.desc_project }}</td>
+        <td>View Tasks</td>
+        <td>
+          <small class="text-muted"
+            >{{ tasks.created_on|date:"d M Y, H:i" }}</small
+          >
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="4" class="text-center">No projects available.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock table_task %}
-<!-- <form action="">
-  {{form}}
-</form> -->
