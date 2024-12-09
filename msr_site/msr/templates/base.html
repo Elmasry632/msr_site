@@ -10,7 +10,12 @@
 		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
 	</head>
 	<body>
-		<div class="container"> {% block header %}{% endblock %}{% block table_task %}{% endblock %}
+		<div class="container"> {% block header %}<ol class="breadcrumb my-4" style="background-color: #adacac">
+			<li class="breadcrumb-item">
+			  <a href="{% url 'task_boards' %}">Home</a>
+			</li>
+			<li class="breadcrumb-item active">{{ board.project_name }}</li>
+		  </ol>{% endblock %}{% block table_task %}{% endblock %}
             {% block form %}{% endblock %}
 			</div>
 		</body>

@@ -6,7 +6,7 @@ from .models import *
 class TaskBoardAdmin(admin.ModelAdmin):
     list_display = ['project_name', 'desc_project', 'created_by', 'created_on']
     search_fields = ['project_name', 'desc_project']
-    list_filter = ['created_on', 'created_by']
+    list_filter = ['created_by', 'created_on']
     ordering = ['created_on']
 
 

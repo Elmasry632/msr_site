@@ -1,17 +1,29 @@
-{% extends 'base.html' %} {% block title %} ADD Project {% endblock title %}
-{%block header %}
+{% extends 'base.html' %} 
+
+{% block title %} ADD Project {% endblock title %}
+
+{% block header %}
 <ol class="breadcrumb my-4" style="background-color: #adacac">
   <li class="breadcrumb-item">
     <a href="{% url 'task_boards' %}">Home</a>
   </li>
 
+  <!-- التحقق من وجود board وعرض اسم المشروع إذا كان موجودًا -->
   {% if board %}
-  <li class="breadcrumb-item">{{ board.project_name }}</li>
-  {% else %}
-  <li class="breadcrumb-item active">New Project</li>
+  <li class="breadcrumb-item">
+    <a href="{% url 'task_board' board.id %}">{{ board.project_name }}</a>
+  </li>
   {% endif %}
+
+  <li class="breadcrumb-item active">New Project</li>
 </ol>
-{% endblock  %} {% block form %}
+{% endblock header %}
+<!-- زر العودة للصفحة السابقة -->
+
+{% block form %}
+<button type="button" class="btn btn-secondary" onclick="window.history.back();">
+  Back
+</button>
 <form method="POST">
   {% csrf_token %}
 
@@ -19,9 +31,11 @@
   {% if form.errors %}
   <div class="alert alert-danger">
     <ul>
-      {% for field in form %} {% for error in field.errors %}
-      <li>{{ error }}</li>
-      {% endfor %} {% endfor %}
+      {% for field in form %}
+        {% for error in field.errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+      {% endfor %}
     </ul>
   </div>
   {% endif %}
@@ -29,8 +43,7 @@
   <!-- حقل اسم المشروع -->
   <div class="form-group">
     <label for="id_project_name">Project Name</label>
-    <input type="text" name="project_name" id="id_project_name"
-    class="form-control" " />
+    <input type="text" name="project_name" id="id_project_name" class="form-control" />
   </div>
 
   <!-- حقل وصف المشروع -->

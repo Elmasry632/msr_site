@@ -1,20 +1,18 @@
-{% extends 'base.html' %} {% block title %} Task Boards {% endblock title %} 
+{% extends 'base.html' %} {% block title %} Task Boards {% endblock title %}
 {%block header %}
 <ol class="breadcrumb my-4" style="background-color: #adacac">
-  <li class="breadcrumb-item">
-    <a href="{% url 'task_boards' %}">Home</a>
-  </li>
+  <li class="breadcrumb-item">Home</li>
   <li class="breadcrumb-item active">{{ board.project_name }}</li>
 </ol>
-{% endblock %}
-{%block table_task %}
+{% endblock %} {%block table_task %}
 <div class="table-responsive">
   <table class="table table-bordered table-hover">
-    <thead class="table-danger">
+    <thead class="table-danger thead-inverse">
       <tr>
         <th>Project Name</th>
         <th>Description</th>
         <th>View Tasks</th>
+        <th>Created by</th>
         <th>Last Updated</th>
       </tr>
     </thead>
@@ -28,6 +26,7 @@
         </td>
         <td>{{ tasks.desc_project }}</td>
         <td>View Tasks</td>
+        <td>{{tasks.created_by}}</td>
         <td>
           <small class="text-muted"
             >{{ tasks.created_on|date:"d M Y, H:i" }}</small
