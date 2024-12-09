@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Task_board, Task_desc
-from .forms import AddProjectForm  # تأكد أن النموذج معرف بشكل صحيح
+from .forms import *  # تأكد أن النموذج معرف بشكل صحيح
 
 # عرض جميع لوحات المشاريع (Task Boards)
 def msr(request):
@@ -39,3 +39,16 @@ def add_project(request, board_id=None):
 
     # تمرير النموذج واللوحة (إذا كانت موجودة) إلى القالب
     return render(request, "add_project.html", {"form": form, "board": board})
+
+
+@login_required
+def add_task(request):
+    if request.method == 'POST':
+        form = TaskDescForm(request.POST, board_id=board_id)
+        if form.is_valid():
+            form.save()  # حفظ المهمة الجديدة
+            return redirect('task_boards')  # إعادة التوجيه إلى صفحة لوحات المهام
+    else:
+        form = TaskDescForm()
+    
+    return render(request, 'add_task.html', {'form': form})
