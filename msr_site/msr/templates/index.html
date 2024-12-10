@@ -1,45 +1,50 @@
-{% extends 'base.html' %} {% block title %} Task Boards {% endblock title %}
-{%block header %}
-<ol class="breadcrumb my-4" style="background-color: #adacac">
-  <li class="breadcrumb-item">Home</li>
-  <li class="breadcrumb-item active">{{ board.project_name }}</li>
-</ol>
-{% endblock %} {%block table_task %}
-
-<div class="table-responsive">
-  <table class="table table-bordered table-hover">
-    <thead class="table-danger thead-inverse">
-      <tr>
-        <th>Project Name</th>
-        <th>Description</th>
-        <th>View Tasks</th>
-        <th>Created by</th>
-        <th>Last Updated</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for tasks in boards %}
-      <tr>
-        <td>
-          <a href="{% url 'task_board' tasks.pk %}">
-            {{ tasks.project_name }}
-          </a>
-        </td>
-        <td>{{ tasks.desc_project }}</td>
-        <td>View Tasks</td>
-        <td>{{tasks.created_by}}</td>
-        <td>
-          <small class="text-muted"
-            >{{ tasks.created_on|date:"d M Y, H:i" }}</small
-          >
-        </td>
-      </tr>
-      {% empty %}
-      <tr>
-        <td colspan="4" class="text-center">No projects available.</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</div>
+{% extends 'base.html' %}
+{% block title %}
+	Task Boards
+{% endblock title %}
+{% block header %}
+	<ol class="breadcrumb my-4" style="background-color: #adacac">
+		<li class="breadcrumb-item">Home</li>
+		<li class="breadcrumb-item active">{{ board.project_name }}</li>
+	</ol>
+{% endblock %}
+{% block table_task %}
+	<button type="button" class="btn btn-secondary btn-outline-primary btn-group-lg">
+		<a href="{% url 'add_project' board.id %}">
+			Add Project</a>
+	</button>
+	<div class="table-responsive">
+		<table class="table table-bordered table-hover">
+			<thead class="table-danger thead-inverse">
+				<tr>
+					<th>Project Name</th>
+					<th>Description</th>
+					<th>View Tasks</th>
+					<th>Created by</th>
+					<th>Last Updated</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for tasks in boards %}
+					<tr>
+						<td>
+							<a href="{% url 'task_board' tasks.pk %}">
+								{{ tasks.project_name }}
+							</a>
+						</td>
+						<td>{{ tasks.desc_project }}</td>
+						<td>View Tasks</td>
+						<td>{{ tasks.created_by }}</td>
+						<td>
+							<small class="text-muted">{{ tasks.created_on|date:"d M Y, H:i" }}</small>
+						</td>
+					</tr>
+					{% empty %}
+					<tr>
+						<td colspan="4" class="text-center">No projects available.</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
 {% endblock table_task %}

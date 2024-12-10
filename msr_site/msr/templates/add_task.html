@@ -1,37 +1,34 @@
 {% extends 'base.html' %}
-
 {% block title %}
-    Add Task
+	Add Task
 {% endblock %}
-
 {% block header %}
-    <ol class="breadcrumb my-4" style="background-color: #adacac;">
-        <li class="breadcrumb-item">
-            <a href="{% url 'task_boards' %}">Home</a>
-        </li>
-        <li class="breadcrumb-item active">Add Task</li>
-    </ol>
+<ol class="breadcrumb my-4" style="background-color: #adacac;">
+    <li class="breadcrumb-item">
+        <a href="{% url 'task_boards' %}">Home</a>
+    </li>
+    <li class="breadcrumb-item active">Add Task</li>
+</ol>
 {% endblock %}
-
 {% block form %}
-    <form method="POST">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="{{ form.task_name.id_for_label }}">Task Name</label>
-            {{ form.task_name }}
-        </div>
-        <div class="form-group">
-            <label for="{{ form.responsible.id_for_label }}">Responsible</label>
-            {{ form.responsible }}
-        </div>
-        <div class="form-group">
-            <label for="{{ form.task_desc.id_for_label }}">Task Description</label>
-            {{ form.task_desc }}
-        </div>
-        <div class="form-group">
-            <label for="{{ form.board.id_for_label }}">Task Board</label>
-            {{ form.board }}
-        </div>
-        <button type="submit" class="btn btn-success">Add Task</button>
-    </form>
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="{{ form.task_name.id_for_label }}">Task Name</label>
+        {{ form.task_name }}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.responsible.id_for_label }}">Responsible</label>
+        {{ form.responsible }}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.task_desc.id_for_label }}">Task Description</label>
+        {{ form.task_desc }}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.board.id_for_label }}">Task Board</label>
+        {{ form.board }}
+    </div>
+    <button type="submit" class="btn btn-success">Add Task</button>
+</form>
 {% endblock %}

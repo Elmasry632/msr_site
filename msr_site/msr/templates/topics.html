@@ -3,24 +3,27 @@
 	{{ board.project_name }}
 {% endblock %}
 {% block header %}
-<ol class="breadcrumb my-4" style="background-color: #adacac;">
-    <li class="breadcrumb-item "><a href="{% url 'task_boards'%}"> Home </li></a>
-    <li class="breadcrumb-item active">{{board.project_name}}</li>
-</ol>
+	<ol class="breadcrumb my-4" style="background-color: #adacac;">
+		<li class="breadcrumb-item ">
+			<a href="{% url 'task_boards' %}">
+				Home
+			</li>
+		</a>
+		<li class="breadcrumb-item active">{{ board.project_name }}</li>
+	</ol>
 {% endblock %}
-
 {
 {% block table_task %}
-<button type="button" class="btn btn-secondary" >
-		<a class="fw-bold text-info text-decoration-none" href="{% url 'task_boards'%}">
+	<button type="button" class="btn btn-secondary">
+		<a class="fw-bold text-info text-decoration-none" href="{% url 'task_boards' %}">
 			Back
 		</a>
-	  </button>
-<button type="button" class="btn btn-secondary btn-outline-primary btn-group-lg" >
-	<a class="fw-bold text-info text-decoration-none" href="{% url 'add_project' board.id %}">
-		Add Project
-	</a>
-  </button>
+	</button>
+	<button type="button" class="btn btn-secondary btn-outline-primary btn-group-lg">
+		<a class="fw-bold text-info text-decoration-none" href="{% url 'add_project' board.id %}">
+			Add Project
+		</a>
+	</button>
 	<table class="table">
 		<thead class="theead-inverse">
 			<tr>
