@@ -24,10 +24,10 @@ class Task_desc(models.Model):
         verbose_name = "Task Description"
         verbose_name_plural = "Task Descriptions"
         ordering = ["-created_on"]
-class add_project(models.Model):
-    name = models.CharField(max_length=20, verbose_name="Project Name")
-    def __str__(self):
-        return self.name
-    class Meta:
-        verbose_name = "Add Project"
-        verbose_name_plural = "Add Projects"
+# class add_project(models.Model):
+#     name = models.CharField(max_length=20, verbose_name="Project Name")
+#     def __str__(self):
+#         return self.name
+#     class Meta:
+#         verbose_name = "Add Project"
+#         verbose_name_plural = "Add Projects"

@@ -1,51 +1,55 @@
-{% extends 'base.html' %} 
-
-{% block title %} ADD Project {% endblock title %}
-
+{% extends 'base.html' %}
+{% block title %}
+	ADD Project
+{% endblock title %}
 {% block header %}
-<ol class="breadcrumb my-4" style="background-color: #adacac">
-  <li class="breadcrumb-item">
-    <a href="{% url 'task_boards' %}">Home</a>
-  </li>
-  {% if board %}
-  <li class="breadcrumb-item">
-    <a href="{% url 'task_board' board.id %}">{{ board.project_name }}</a>
-  </li>
-  {% endif %}
-
-  <li class="breadcrumb-item active">New Project</li>
-</ol>
+	<ol class="breadcrumb my-4" style="background-color: #adacac">
+		<li class="breadcrumb-item">
+			<a class="text-primary text-decoration-none" href="{% url 'task_boards' %}">Home</a>
+		</li>
+		{% if board %}
+			<li class="breadcrumb-item">
+				<a class="text-primary text-decoration-none" href="{% url 'task_board' board.id %}">{{ board.project_name }}</a>
+			</li>
+		{% endif %}
+		<li class="breadcrumb-item active">New Project</li>
+	</ol>
 {% endblock header %}
 {% block form %}
-<button type="button" class="btn btn-secondary" onclick="window.history.back();">
-  Back
-</button>
-<form method="POST">
-  {% csrf_token %}
-  {% if form.errors %}
-  <div class="alert alert-danger">
-    <ul>
-      {% for field in form %}
-        {% for error in field.errors %}
-        <li>{{ error }}</li>
-        {% endfor %}
-      {% endfor %}
-    </ul>
-  </div>
-  {% endif %}
-  <div class="form-group">
-    <label for="id_project_name">Project Name</label>
-    <input type="text" name="project_name" id="id_project_name" class="form-control" />
-  </div>
-  <div class="form-group">
-    <label for="id_description">Description</label>
-    <textarea
-      class="form-control"
-      name="description"
-      id="id_description"
-      rows="6"
-    ></textarea>
-  </div>
-  <button type="submit" class="btn btn-success">Add Project</button>
-</form>
-{% endblock form %}
+	<button type="button" class="btn btn-secondary" onclick="window.history.back();">
+		Back
+	</button>
+	<form method="POST">
+		{% csrf_token %}
+		{% if form.errors %}
+			<div class="alert alert-success">
+				<ul>
+					{% for field in form %}
+						{% for error in field.errors %}
+							<li>{{ error }}</li>
+						{% endfor %}
+					{% endfor %}
+				</ul>
+			</div>
+		{% endif %}
+		<div class="form-group">
+			<label for="id_project_name">Project Name</label>
+			<input type="text" name="project_name" id="id_project_name" class="form-control"/>
+		</div>
+		<div class="form-group">
+			<label for="id_description">Description</label>
+			<textarea class="form-control" name="description" id="id_description" rows="3"></textarea>
+		</div>
+		<div class="formgroup">
+			<label for="id_task_name">Task name</label>
+			<input type="text" name="taskname" id="id_task_name" class="form-control"></div>
+			<div class="formgroup">
+				<label for="id_responsible">Responsiple</label>
+				<input type="text" name="Responsiple" id="id_responsible" class="form-control"></div>
+				<div class="formgroup">
+					<label for="id_task_desc">Task description</label>
+					<textarea type="text" name="task_desc" id="id_task_desc" class="form-control"></textarea>
+				</div>
+				<button type="submit" class="btn btn-success">Add Project</button>
+			</form>
+		{% endblock form %}
